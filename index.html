@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f5ee" />
+    <title>Leafday — Home plant care</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Leafday home"><span class="brand-mark">⌁</span> leafday</a>
+        <nav aria-label="Primary navigation"><a class="active" href="#plants">My plants</a><a href="#rhythm">Care rhythm</a></nav>
+        <div class="top-actions"><button id="addPlantButton" class="add-button" type="button">+ Add a plant</button><button id="calendarButton" class="quiet-button" type="button">Care history <span aria-hidden="true">↗</span></button></div>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="welcome-title">
+          <div class="hero-copy">
+            <p class="eyebrow">Your indoor garden</p>
+            <h1 id="welcome-title">A little care<br />goes a long way.</h1>
+            <p>Everything your ten leafy roommates need, gathered into one calm, friendly place.</p>
+            <a class="primary-button" href="#plants">Meet your plants <span>↓</span></a>
+          </div>
+          <div class="hero-image" role="img" aria-label="A cheerful collection of houseplants in a sunny room"></div>
+          <div class="hero-note"><span>✦</span> Tip: Check the soil before you reach for the watering can.</div>
+        </section>
+
+        <section id="plants" class="plants-section" aria-labelledby="plants-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">Plant library</p><h2 id="plants-title">Pick a plant</h2></div>
+            <p class="count"><span id="plantCount">10</span> plants growing with you</p>
+          </div>
+          <div class="filter-row" aria-label="Filter plants">
+            <button class="filter active" data-filter="all">All plants</button>
+            <button class="filter" data-filter="easy">Easy-going</button>
+            <button class="filter" data-filter="bright">Bright light</button>
+            <button class="filter" data-filter="water">Thirsty</button>
+          </div>
+          <div id="plantGrid" class="plant-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="rhythm" class="rhythm-section">
+          <div><p class="eyebrow">A gentle rhythm</p><h2>Care, without the guesswork.</h2></div>
+          <div class="rhythm-cards">
+            <article><span class="rhythm-icon">◌</span><h3>Check in weekly</h3><p>Look at leaves, feel the soil, and enjoy what’s changed.</p></article>
+            <article><span class="rhythm-icon">↟</span><h3>Feed active growth</h3><p>More light and new leaves? That’s your cue to fertilise.</p></article>
+            <article><span class="rhythm-icon">◐</span><h3>Let each plant lead</h3><p>Schedules help, but the soil and leaves always get the final say.</p></article>
+          </div>
+        </section>
+      </main>
+      <footer>Made for slow mornings and happy leaves <span>✦</span></footer>
+    </div>
+
+    <dialog id="plantDialog" class="plant-dialog">
+      <button class="close-dialog" aria-label="Close plant details" type="button">×</button>
+      <div id="dialogContent"></div>
+    </dialog>
+    <dialog id="historyDialog" class="history-dialog">
+      <button class="close-history" aria-label="Close care history" type="button">×</button>
+      <p class="eyebrow">Care history</p><h2>Your small moments of care</h2>
+      <div id="historyContent"></div>
+    </dialog>
+    <dialog id="addPlantDialog" class="add-plant-dialog">
+      <button class="close-add" aria-label="Close add plant" type="button">×</button>
+      <p class="eyebrow">Grow your collection</p><h2>Who’s the new leaf?</h2>
+      <p class="add-intro">Type the plant’s name and Leafday will create a starter care guide right away.</p>
+      <form id="addPlantForm"><label for="plantName">Plant name</label><input id="plantName" name="plantName" autocomplete="off" placeholder="e.g. Bird of Paradise" required maxlength="70" /><p class="form-note">We’ll match familiar plant types to a care template, with a gentle general guide for anything unusual.</p><button class="primary-button form-submit" type="submit">Create care guide <span>→</span></button></form>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
