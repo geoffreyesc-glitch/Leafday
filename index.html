@@ -15,7 +15,7 @@
       <header class="topbar">
         <a class="brand" href="#" aria-label="Leafday home"><span class="brand-mark">⌁</span> leafday</a>
         <nav aria-label="Primary navigation"><a class="active" href="#plants">My plants</a><a href="#rhythm">Care rhythm</a></nav>
-        <div class="top-actions"><button id="addPlantButton" class="add-button" type="button">+ Add a plant</button><button id="calendarButton" class="quiet-button" type="button">Care history <span aria-hidden="true">↗</span></button></div>
+        <div class="top-actions"><button id="addPlantButton" class="add-button" type="button">+ Add a plant</button><button id="calendarButton" class="quiet-button" type="button">Care history <span aria-hidden="true">↗</span></button><button id="accountButton" class="account-button" type="button">Sign in</button></div>
       </header>
 
       <main>
@@ -74,12 +74,27 @@
           <div><label for="plantName">Plant name</label><input id="plantName" name="plantName" autocomplete="off" placeholder="e.g. Bird of Paradise" required maxlength="70" /></div>
           <div><label for="botanicalName">Botanical name <span>(optional)</span></label><input id="botanicalName" name="botanicalName" autocomplete="off" placeholder="e.g. Strelitzia reginae" maxlength="90" /></div>
         </div>
-        <fieldset class="photo-field"><legend>Plant photo <span>(optional)</span></legend><label class="photo-picker" for="plantPhoto"><span id="photoPreview" class="photo-preview" aria-hidden="true">＋</span><span><strong>Choose a photo</strong><small>JPG, PNG or WebP · stored only in this browser</small></span></label><input id="plantPhoto" name="plantPhoto" type="file" accept="image/jpeg,image/png,image/webp" /></fieldset>
+        <fieldset class="photo-field"><legend>Plant photo <span>(optional)</span></legend><label class="photo-picker" for="plantPhoto"><span id="photoPreview" class="photo-preview" aria-hidden="true">＋</span><span><strong>Choose a photo</strong><small>JPG, PNG or WebP · shared securely with your household</small></span></label><input id="plantPhoto" name="plantPhoto" type="file" accept="image/jpeg,image/png,image/webp" /></fieldset>
         <fieldset><legend>Care requirements</legend><p class="form-note">We’ve added a sensible starter guide. Edit any field to make it specific to this plant.</p><div id="careFields" class="care-form-grid"></div></fieldset>
         <fieldset><legend>Care profile</legend><div class="tag-options"><label><input type="checkbox" name="plantTag" value="easy" /> Easy-going</label><label><input type="checkbox" name="plantTag" value="bright" /> Bright light</label><label><input type="checkbox" name="plantTag" value="water" /> Thirsty</label></div></fieldset>
         <p id="formError" class="form-error" role="alert"></p><button class="primary-button form-submit" type="submit">Add to my plants <span>→</span></button>
       </form>
     </dialog>
-    <script src="app.js"></script>
+    <dialog id="accountDialog" class="account-dialog">
+      <button class="close-account" aria-label="Close account" type="button">×</button>
+      <p class="eyebrow">Shared garden</p><h2>Leafday together</h2>
+      <div id="authSignedOut">
+        <p class="account-intro">Sign in with your email to share plants, photos, and care history with your household.</p>
+        <form id="signInForm"><label for="signInEmail">Email address</label><input id="signInEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com" /><button class="primary-button account-submit" type="submit">Email me a sign-in link <span>→</span></button></form>
+      </div>
+      <div id="authSignedIn" hidden>
+        <p class="signed-in-as">Signed in as <strong id="accountEmail"></strong></p>
+        <div id="householdStatus" class="household-status"></div>
+        <div id="migrationPanel" class="migration-panel" hidden><strong>Bring over this browser’s saved data</strong><p>Import its existing custom plants and care history once your shared household is ready.</p><button id="migrationButton" class="add-button" type="button">Import browser data</button></div>
+        <button id="signOutButton" class="remove-button account-signout" type="button">Sign out</button>
+      </div>
+      <p id="authStatus" class="auth-status" role="status"></p>
+    </dialog>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
