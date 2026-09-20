@@ -23,7 +23,7 @@
           <div class="hero-copy">
             <p class="eyebrow">Your indoor garden</p>
             <h1 id="welcome-title">A little care<br />goes a long way.</h1>
-            <p>Everything your ten leafy roommates need, gathered into one calm, friendly place.</p>
+            <p>Everything your leafy roommates need, gathered into one calm, friendly place.</p>
             <a class="primary-button" href="#plants">Meet your plants <span>↓</span></a>
           </div>
           <div class="hero-image" role="img" aria-label="A cheerful collection of houseplants in a sunny room"></div>
@@ -33,7 +33,7 @@
         <section id="plants" class="plants-section" aria-labelledby="plants-title">
           <div class="section-heading">
             <div><p class="eyebrow">Plant library</p><h2 id="plants-title">Pick a plant</h2></div>
-            <p class="count"><span id="plantCount">10</span> plants growing with you</p>
+            <p class="count"><span id="plantCount">14</span> plants growing with you</p>
           </div>
           <div class="filter-row" aria-label="Filter plants">
             <button class="filter active" data-filter="all">All plants</button>
@@ -68,8 +68,17 @@
     <dialog id="addPlantDialog" class="add-plant-dialog">
       <button class="close-add" aria-label="Close add plant" type="button">×</button>
       <p class="eyebrow">Grow your collection</p><h2>Who’s the new leaf?</h2>
-      <p class="add-intro">Type the plant’s name and Leafday will create a starter care guide right away.</p>
-      <form id="addPlantForm"><label for="plantName">Plant name</label><input id="plantName" name="plantName" autocomplete="off" placeholder="e.g. Bird of Paradise" required maxlength="70" /><p class="form-note">We’ll match familiar plant types to a care template, with a gentle general guide for anything unusual.</p><button class="primary-button form-submit" type="submit">Create care guide <span>→</span></button></form>
+      <p class="add-intro">Add a photo and the care notes that are right for your particular plant.</p>
+      <form id="addPlantForm">
+        <div class="form-grid">
+          <div><label for="plantName">Plant name</label><input id="plantName" name="plantName" autocomplete="off" placeholder="e.g. Bird of Paradise" required maxlength="70" /></div>
+          <div><label for="botanicalName">Botanical name <span>(optional)</span></label><input id="botanicalName" name="botanicalName" autocomplete="off" placeholder="e.g. Strelitzia reginae" maxlength="90" /></div>
+        </div>
+        <fieldset class="photo-field"><legend>Plant photo <span>(optional)</span></legend><label class="photo-picker" for="plantPhoto"><span id="photoPreview" class="photo-preview" aria-hidden="true">＋</span><span><strong>Choose a photo</strong><small>JPG, PNG or WebP · stored only in this browser</small></span></label><input id="plantPhoto" name="plantPhoto" type="file" accept="image/jpeg,image/png,image/webp" /></fieldset>
+        <fieldset><legend>Care requirements</legend><p class="form-note">We’ve added a sensible starter guide. Edit any field to make it specific to this plant.</p><div id="careFields" class="care-form-grid"></div></fieldset>
+        <fieldset><legend>Care profile</legend><div class="tag-options"><label><input type="checkbox" name="plantTag" value="easy" /> Easy-going</label><label><input type="checkbox" name="plantTag" value="bright" /> Bright light</label><label><input type="checkbox" name="plantTag" value="water" /> Thirsty</label></div></fieldset>
+        <p id="formError" class="form-error" role="alert"></p><button class="primary-button form-submit" type="submit">Add to my plants <span>→</span></button>
+      </form>
     </dialog>
     <script src="app.js"></script>
   </body>
